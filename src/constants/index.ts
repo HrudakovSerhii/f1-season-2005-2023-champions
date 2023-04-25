@@ -11,3 +11,5 @@ export const SEASONS = '/seasons'
 
 export const ABOUT = '/about'
 export const CONTACT = '/contact'
+
+export const CONTACT_EMAIL = 'hrudakovserhii@gmail.com'

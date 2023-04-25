@@ -6,6 +6,7 @@ import { createRoutesFromElements, Route } from 'react-router'
 import App from '../App'
 
 import NoRouteMatch from './NoRouteMatch'
+import RouteLoadingError from './RouteLoadingError'
 
 import { HOME, SEASON } from '../constants'
 
@@ -19,7 +20,7 @@ const appRouter = createBrowserRouter(
                     element={
                         <Suspense
                             children={<div>Season page</div>}
-                            fallback={<div>Fallback page</div>}
+                            fallback={<RouteLoadingError />}
                         />
                     }
                 />
