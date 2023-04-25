@@ -8,26 +8,26 @@ import { SEASONS_RANGE } from '../constants'
 
 import { StandingItem } from '../types'
 
-type UseSeasonWinner = {
+type UsePreviousSeasonWinner = {
     data: StandingItem | undefined
 }
 
 /**
- * Hook access local state data and search winner of specific season in SeasonsWinners list.
- * If SeasonsWinners local state data is not available or empty, UseSeasonWinner.data is undefined.
- * @param seasonId - season value
- * @return {UseSeasonWinner}
+ * Hook access local state data and search winner of previous season in SeasonsWinners list.
+ * If SeasonsWinners local state data is not available or empty, UsePreviousSeasonWinner.data is undefined.
+ * @param currentSeasonId - current season value
+ * @return {UsePreviousSeasonWinner} season winner data for previous season
  */
-const useSeasonWinner: (seasonId: string) => UseSeasonWinner = (
-    seasonId: string
-) => {
+const usePreviousSeasonWinner: (
+    currentSeasonId: string
+) => UsePreviousSeasonWinner = (currentSeasonId: string) => {
     const winnersListItems = useSeasonsWinnersListLocal((state) => state.items)
     const [seasonWinnerData, setSeasonWinnerData] = useState<
         StandingItem | undefined
     >()
 
     useEffect(() => {
-        const season = Number(seasonId)
+        const season = Number(currentSeasonId)
 
         if (season && winnersListItems?.length) {
             const prevSeason = season - 1
@@ -44,11 +44,11 @@ const useSeasonWinner: (seasonId: string) => UseSeasonWinner = (
                 setSeasonWinnerData(winnerItem)
             }
         }
-    }, [winnersListItems, seasonId])
+    }, [currentSeasonId])
 
     return {
         data: seasonWinnerData,
     }
 }
 
-export default useSeasonWinner
+export default usePreviousSeasonWinner
