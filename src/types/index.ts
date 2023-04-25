@@ -74,3 +74,7 @@ export interface AllSeasonsMRData extends MRData {
         StandingsLists: StandingItem[]
     }
 }
+
+export interface AllSeasonsData {
+    MRData: AllSeasonsMRData
+}
