@@ -1,4 +1,5 @@
-import { filterWinnersBySeasonRange } from '../hooksUtils'
+import { filterWinnersBySeasonRange, selectWinnerBySeason } from '../hooksUtils'
+
 import { StandingItem } from '../../types'
 
 const testData: StandingItem[] = [
@@ -37,6 +38,24 @@ describe('App utils', () => {
             const result = filterWinnersBySeasonRange(testData, [1990, 1999])
 
             expect(result).toEqual([])
+        })
+    })
+
+    describe('selectWinnerBySeason', () => {
+        it('should return correct item for first appearance of searched season in data list', () => {
+            const result = selectWinnerBySeason(testData, '2005')
+
+            expect(result).toEqual({
+                season: '2005',
+                round: '2',
+                DriverStandings: [],
+            })
+        })
+
+        it('should return undefined if data does not contain provided season items', () => {
+            const result = selectWinnerBySeason(testData, '2007')
+
+            expect(result).toBeUndefined()
         })
     })
 })

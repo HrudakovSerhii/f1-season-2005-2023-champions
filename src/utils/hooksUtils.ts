@@ -18,3 +18,12 @@ export const filterWinnersBySeasonRange = (
             Number(standingItem.season) >= seasonRange[0] &&
             Number(standingItem.season) <= seasonRange[1]
     )
+
+/**
+ * Function search and return winner data of specific season
+ * @param data {StandingItem[]} list of season items
+ * @param season {string} id of the season
+ * @return StandingItem
+ */
+export const selectWinnerBySeason = (data: StandingItem[], season: string) =>
+    data.find((standingItem) => standingItem.season === season)
