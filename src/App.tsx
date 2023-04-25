@@ -3,6 +3,8 @@ import { Outlet, useParams } from 'react-router'
 
 import Header from './components/Header'
 
+import './App.css'
+
 function App() {
     const routerParams = useParams()
 
