@@ -23,7 +23,6 @@ export const tableHeaderData = [
 const SeasonWinnersTable: React.FC<RacesWinnersTableProps> = ({
     tableData,
 }) => {
-
     return (
         <table className="w-full text-sm text-left">
             <thead className="sticky top-0 bg-gray-50 text-xs text-gray-700 uppercase">

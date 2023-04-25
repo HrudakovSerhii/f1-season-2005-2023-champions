@@ -46,7 +46,7 @@ const SeasonWinnersTableRow: React.FC<RacesWinnersListItemProps> = ({
                 <div className="flex">
                     <span>{raceTime}</span>
                     <img
-                        src="/assets/icons8-chequered-flag-48.png"
+                        src="/assets/chequered-flag-icon.png"
                         className="h-4 ml-2"
                         alt="chequered flag icon"
                     />
