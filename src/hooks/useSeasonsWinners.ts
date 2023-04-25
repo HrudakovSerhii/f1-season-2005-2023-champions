@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import useRemoteData, { RemoteData } from './useRemoteData'
+import { useSeasonsWinnersListLocal } from './useLocalState'
 
 import { filterWinnersBySeasonRange } from '../utils/hooksUtils'
 
@@ -21,7 +22,10 @@ type UseSeasonsWinners = Omit<
  * @return UseSeasonsWinners
  */
 const useSeasonsWinners: () => UseSeasonsWinners = () => {
-    const [winnersList, setWinnersList] = useState<StandingItem[]>()
+    const winnersListState = useSeasonsWinnersListLocal((state) => ({
+        items: state.items,
+        update: state.update,
+    }))
 
     const { data, loading, error, fetchRemoteData } =
         useRemoteData<AllSeasonsData>(ROOT_ERGAST_API_PATH)
@@ -41,14 +45,14 @@ const useSeasonsWinners: () => UseSeasonsWinners = () => {
                 data?.MRData.StandingsTable.StandingsLists
             )
 
-            setWinnersList(updatedWinnersList)
+            winnersListState.update(updatedWinnersList)
         }
     }, [data])
 
     return {
         loading,
         error,
-        data: winnersList,
+        data: winnersListState.items,
     }
 }
 
