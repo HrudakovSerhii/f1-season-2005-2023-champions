@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import DataFetcher from '../utils/dataFetcher/DataFetcher'
 
 type FetchRemoteData = (
@@ -25,28 +25,28 @@ function useRemoteData<T>(
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<Error | null>(null)
 
-    const fetchRemoteData: FetchRemoteData = async (
-        fetchUrl: string,
-        fetchQueryParams?: string
-    ) => {
-        setLoading(true)
+    const fetchRemoteData: FetchRemoteData = useCallback(
+        async (fetchUrl: string, fetchQueryParams?: string) => {
+            setLoading(true)
 
-        try {
-            const result = await dataFetcher.current.fetch(
-                fetchUrl,
-                fetchQueryParams
-            )
+            try {
+                const result = await dataFetcher.current.fetch(
+                    fetchUrl,
+                    fetchQueryParams
+                )
 
-            setData(result as T)
-            setError(null)
-        } catch (error) {
-            const castedError = error as unknown
+                setData(result as T)
+                setError(null)
+            } catch (error) {
+                const castedError = error as unknown
 
-            setError(castedError as Error)
-        } finally {
-            setLoading(false)
-        }
-    }
+                setError(castedError as Error)
+            } finally {
+                setLoading(false)
+            }
+        },
+        []
+    )
 
     return {
         data,
