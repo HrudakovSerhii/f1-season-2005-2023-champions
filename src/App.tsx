@@ -1,25 +1,15 @@
 import React from 'react'
+import { Outlet, useParams } from 'react-router'
 
-import { Outlet } from 'react-router'
-import { Link } from 'react-router-dom'
+import Header from './components/Header'
 
 function App() {
+    const routerParams = useParams()
+
     return (
         <div className="App">
-            <header className="App-header">
-                App Header
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to={`/season/2005`}>2005</Link>
-                        </li>
-                        <li>
-                            <Link to={`/season/2006`}>2006</Link>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-            <Outlet />
+            <Header />
+            <Outlet context={routerParams} />
         </div>
     )
 }
