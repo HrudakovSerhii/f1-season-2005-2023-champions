@@ -23,7 +23,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "serve": "serve -s build",
+    "start-prod": "npm run build && npm run serve",
     "test": "react-scripts test",
+    "test-update": "react-scripts test -u",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
