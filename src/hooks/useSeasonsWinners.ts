@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 
 import useRemoteData, { RemoteData } from './useRemoteData'
 
+import { filterWinnersBySeasonRange } from '../utils/hooksUtils'
+
 import {
     ALL_SEASON_WINNERS_PATH,
     ROOT_ERGAST_API_PATH,
@@ -37,7 +39,11 @@ const useSeasonsWinners: () => UseSeasonsWinners = () => {
 
     useEffect(() => {
         if (data?.MRData.StandingsTable.StandingsLists) {
-            setWinnersList(data?.MRData.StandingsTable.StandingsLists)
+            const updatedWinnersList = filterWinnersBySeasonRange(
+                data?.MRData.StandingsTable.StandingsLists
+            )
+
+            setWinnersList(updatedWinnersList)
         }
     }, [data])
 
