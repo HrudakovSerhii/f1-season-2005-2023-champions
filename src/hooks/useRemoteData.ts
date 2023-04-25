@@ -6,7 +6,7 @@ type FetchRemoteData = (
     fetchQueryParams?: string
 ) => Promise<void>
 
-interface RemoteData<T> {
+export interface RemoteData<T> {
     data: T | null
     loading: boolean
     error: Error | null

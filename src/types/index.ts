@@ -78,3 +78,7 @@ export interface AllSeasonsMRData extends MRData {
 export interface AllSeasonsData {
     MRData: AllSeasonsMRData
 }
+
+export interface SeasonData {
+    MRData: SeasonMRData
+}
