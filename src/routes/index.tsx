@@ -12,6 +12,8 @@ import RouteLoadingError from './RouteLoadingError'
 
 import { HOME, SEASON } from '../constants'
 
+const SeasonScreen = React.lazy(() => import('../screens/seasonScreen'))
+
 const appRouter = createBrowserRouter(
     createRoutesFromElements(
         <Route>
@@ -21,7 +23,7 @@ const appRouter = createBrowserRouter(
                     path={SEASON}
                     element={
                         <Suspense
-                            children={<div>Season page</div>}
+                            children={<SeasonScreen />}
                             fallback={<RouteLoadingError />}
                         />
                     }
