@@ -18,36 +18,29 @@ const HomeScreen = () => {
     const groupedRenderData = getSeasonsWinnersGroupedData(data || [], 6)
 
     return (
-        <div className="seasons-winners flex flex-col w-[100%]">
-            {!loading && <ScreenTitle title={pageTitle} />}
+        <div className="seasons-winners flex flex-col w-full">
             {loading && <Spinner title={`Loading ${pageTitle}`} />}
             {!loading && groupedRenderData?.length && (
-                <>
-                    <div className="seasons-winners-list flex flex-col overflow-scroll pb-6">
+                <div className="flex flex-col items-center">
+                    <ScreenTitle title={pageTitle} />
+                    <div className="flex flex-col w-full max-w-screen-xl">
                         {groupedRenderData?.map((raceGroup, index) => (
-                            <div
-                                key={`seasons-group-${index}`}
-                                className="seasons-winners-list flex overflow-scroll pb-6"
+                            <ul
+                                className="seasons-winners-list flex overflow-scroll pb-6 px-4"
+                                key={`seasons-group-ul-${index}`}
                             >
-                                <ul
-                                    className="flex"
-                                    key={`seasons-group-ul-${index}`}
-                                >
-                                    {raceGroup.map((race) => (
-                                        <SeasonWinnerCard
-                                            key={`${race.season}-${race.round}`}
-                                            round={race.round}
-                                            season={race.season}
-                                            DriverStandings={
-                                                race.DriverStandings
-                                            }
-                                        />
-                                    ))}
-                                </ul>
-                            </div>
+                                {raceGroup.map((race) => (
+                                    <SeasonWinnerCard
+                                        key={`${race.season}-${race.round}`}
+                                        round={race.round}
+                                        season={race.season}
+                                        DriverStandings={race.DriverStandings}
+                                    />
+                                ))}
+                            </ul>
                         ))}
                     </div>
-                </>
+                </div>
             )}
         </div>
     )

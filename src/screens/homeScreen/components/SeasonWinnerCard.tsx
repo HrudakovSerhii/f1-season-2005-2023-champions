@@ -15,7 +15,7 @@ const SeasonWinnerCard: React.FC<StandingItem> = ({
     const { name } = Constructors[0]
 
     return (
-        <div className="app-season-winner-card flex flex-grow flex-col w-[100%] min-w-[200px] p-6 ml-4 last:mr-4 border border-gray-200 rounded-lg shadow">
+        <div className="app-season-winner-card flex flex-grow flex-col w-full min-w-[190px] p-6 mr-4 last:mr-0 border border-gray-200 rounded-lg shadow">
             <span className="text-2xl font-bold tracking-tight text-gray-900 ">
                 {season}
             </span>
