@@ -37,7 +37,7 @@ function useRemoteData<T>(
                 fetchQueryParams
             )
 
-            setData(result)
+            setData(result as T)
             setError(null)
         } catch (error) {
             const castedError = error as unknown

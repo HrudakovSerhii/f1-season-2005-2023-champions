@@ -25,13 +25,15 @@ const useSeasonsWinners: () => UseSeasonsWinners = () => {
         useRemoteData<AllSeasonsData>(ROOT_ERGAST_API_PATH)
 
     useEffect(() => {
-        fetchRemoteData(
-            ALL_SEASON_WINNERS_PATH,
-            new URLSearchParams({
-                limit: '1000',
-            }).toString()
-        )
-    }, [fetchRemoteData])
+        if (!loading) {
+            fetchRemoteData(
+                ALL_SEASON_WINNERS_PATH,
+                new URLSearchParams({
+                    limit: '1000',
+                }).toString()
+            )
+        }
+    }, [loading, fetchRemoteData])
 
     useEffect(() => {
         if (data?.MRData.StandingsTable.StandingsLists) {
