@@ -4,6 +4,21 @@ export const isTest = process.env.NODE_ENV === 'test'
 
 export const SEASONS_RANGE: [number, number] = [2005, 2023]
 
+export const MONTH_NAMES = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+]
+
 // App routing
 export const HOME = '/'
 export const SEASON = '/season/:seasonId'

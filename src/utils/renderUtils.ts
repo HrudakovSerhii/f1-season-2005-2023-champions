@@ -1,3 +1,5 @@
+import { MONTH_NAMES } from '../constants'
+
 import { StandingItem } from '../types'
 
 export const getSeasonsWinnersGroupedData = (
@@ -18,3 +20,11 @@ export const getSeasonsWinnersGroupedData = (
 
         return groupedItems
     }, [] as StandingItem[][])
+
+export const getFormattedDate = (dateString: string) => {
+    const date = new Date(dateString)
+
+    return `${
+        MONTH_NAMES[date.getMonth()]
+    } ${date.getDate()}, ${date.getFullYear()}`
+}
