@@ -5,6 +5,8 @@ import { createRoutesFromElements, Route } from 'react-router'
 
 import App from '../App'
 
+import NoRouteMatch from './NoRouteMatch'
+
 import { HOME, SEASON } from '../constants'
 
 const appRouter = createBrowserRouter(
@@ -21,7 +23,7 @@ const appRouter = createBrowserRouter(
                         />
                     }
                 />
-                <Route path="*" element={<div>No route match page</div>} />
+                <Route path="*" element={<NoRouteMatch />} />
             </Route>
         </Route>
     )
