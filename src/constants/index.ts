@@ -7,3 +7,7 @@ export const SEASONS_RANGE: [number, number] = [2005, 2023]
 // App routing
 export const HOME = '/'
 export const SEASON = 'season/:seasonId'
+export const SEASONS = 'seasons'
+
+export const ABOUT = '/about'
+export const CONTACT = '/contact'
