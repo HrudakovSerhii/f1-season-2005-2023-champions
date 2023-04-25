@@ -11,13 +11,14 @@ An app to present a list of F1 world champions starting from 2005 until now.
 - App should be delivered to GitHub and be shared for viewing by multiple people
 
 ## UI/UX
-Take https://www.leanportal.nl/ as a reference for UI/UX implementation
+https://www.leanportal.nl/ used as a reference for UI/UX implementation
+
 
 ## Data source
-Use http://ergast.com/mrd/ link to get documentation over Ergast Developer API
--- here must be list of API endpoints
+http://ergast.com/mrd/ used to get documentation over Ergast Developer API
+https://flowbite.com/docs/components/accordion/ used as a base for UI components
 
-## Architecture
+## Architecture requirements
 - Clean,reusable code
 - Frontend best practices
 - Cache when using API
@@ -30,9 +31,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 #### Packages used:
 - React - render engine
 - React-router - pages routing util
-- Tailwind - styling util
+- Tailwind - styling utility
 - Zustand - app state manager
-- Jest,RTL - testing libraries
+- Jest, RTL - testing libraries
 - Serve - local development server to verify production build
 
 #### Dev commands:
