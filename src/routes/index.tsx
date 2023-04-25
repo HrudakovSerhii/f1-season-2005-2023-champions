@@ -5,6 +5,8 @@ import { createRoutesFromElements, Route } from 'react-router'
 
 import App from '../App'
 
+import HomeScreen from '../screens/homeScreen'
+
 import NoRouteMatch from './NoRouteMatch'
 import RouteLoadingError from './RouteLoadingError'
 
@@ -14,7 +16,7 @@ const appRouter = createBrowserRouter(
     createRoutesFromElements(
         <Route>
             <Route path={HOME} element={<App />}>
-                <Route index element={<div>Home page</div>} />
+                <Route index element={<HomeScreen />} />
                 <Route
                     path={SEASON}
                     element={
