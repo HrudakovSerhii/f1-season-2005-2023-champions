@@ -14,25 +14,23 @@ describe('App utils', () => {
     describe('filterWinnersBySeasonRange', () => {
         it('returns all items within the default season range', () => {
             const result = filterWinnersBySeasonRange(testData)
-            const expectedSubset = [
+
+            expect(result).toMatchObject([
                 { round: '2' },
                 { round: '3' },
                 { round: '4' },
-                { round: '5' }
-            ]
-
-            expect(result).toEqual(expect.arrayContaining(expectedSubset))
+                { round: '5' },
+            ])
         })
 
         it('returns only items within the specified season range', () => {
             const result = filterWinnersBySeasonRange(testData, [2004, 2005])
-            const expectedSubset = [
+
+            expect(result).toMatchObject([
                 { round: '1' },
                 { round: '2' },
                 { round: '3' },
-            ]
-
-            expect(result).toEqual(expectedSubset)
+            ])
         })
 
         it('returns an empty array when no items are within the season range', () => {
