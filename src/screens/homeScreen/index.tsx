@@ -5,6 +5,7 @@ import useSeasonsWinners from '../../hooks/useSeasonsWinners'
 import { getSeasonsWinnersGroupedData } from '../../utils/renderUtils'
 
 import Spinner from '../../components/Spinner'
+import ScreenTitle from '../../components/ScreenTitle'
 import SeasonWinnerCard from './components/SeasonWinnerCard'
 
 import { SEASONS_RANGE } from '../../constants'
@@ -18,7 +19,7 @@ const HomeScreen = () => {
 
     return (
         <div className="seasons-winners flex flex-col w-[100%]">
-            {!loading && pageTitle}
+            {!loading && <ScreenTitle title={pageTitle} />}
             {loading && <Spinner title={`Loading ${pageTitle}`} />}
             {!loading && groupedRenderData?.length && (
                 <>
