@@ -31,18 +31,21 @@ function useRemoteData<T>(
     ) => {
         setLoading(true)
 
-        const result = await dataFetcher.current.fetch(
-            fetchUrl,
-            fetchQueryParams
-        )
+        try {
+            const result = await dataFetcher.current.fetch(
+                fetchUrl,
+                fetchQueryParams
+            )
 
-        if (typeof result === typeof Error) {
-            setError(result)
-        } else {
             setData(result)
-        }
+            setError(null)
+        } catch (error) {
+            const castedError = error as unknown
 
-        setLoading(false)
+            setError(castedError as Error)
+        } finally {
+            setLoading(false)
+        }
     }
 
     return {
