@@ -7,9 +7,12 @@ import App from '../App'
 
 import HomeScreen from '../screens/homeScreen'
 
+import ErrorBoundary from './ErrorBoundary'
 import NoRouteMatch from './NoRouteMatch'
 import RouteLoadingError from './RouteLoadingError'
 import RouteInDevelopment from './RouteInDevelopment'
+
+import Spinner from '../components/Spinner'
 
 import { ABOUT, CONTACT, HOME, SEASON, SEASONS } from '../constants'
 
@@ -23,10 +26,12 @@ const appRouter = createBrowserRouter(
                 <Route
                     path={SEASON}
                     element={
-                        <Suspense
-                            children={<SeasonScreen />}
-                            fallback={<RouteLoadingError />}
-                        />
+                        <ErrorBoundary fallback={<RouteLoadingError />}>
+                            <Suspense
+                                children={<SeasonScreen />}
+                                fallback={<Spinner title="Loading..." />}
+                            />
+                        </ErrorBoundary>
                     }
                 />
                 <Route
